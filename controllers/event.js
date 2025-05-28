@@ -7,17 +7,17 @@ exports.createEvent = async (req, res) => {
     await event.save();
     res.status(201).json(event);
 };exports.getAllEvents = async (req, res) => {
-        const events = await Event.find();
-        res.json(events);
+        const a = await Event.find();
+        res.json(a);
 };
 exports.deleteEvent = async (req, res) => {
-    const event = await Event.findByIdAndDelete(req.params.id);
-    if (!event) return res.status(404).json({ message: "not found" });
+    const a = await Event.findByIdAndDelete(req.params.id);
+    if (!a) return res.status(404).json({ message: "not found" });
     res.json({ message: "Event deleted" });
 };
 exports.updateEvent = async (req, res) => {
-    const event = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!event) return res.status(404).json({ message: "not found" });
-    res.json(event);
+    const a = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!a) return res.status(404).json({ message: "not found" });
+    res.json(a);
 };
 

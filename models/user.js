@@ -4,8 +4,9 @@ console.log("model class working fine");
 console.log("yoho");
 const userS = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
+  role: { type: String, enum: ["user", "admin"], default: "user" },
   password: { type: String, required: true },
-  role: { type: String, enum: ["user", "admin"], default: "user" }
+  
 });
 userS.methods.comparePassword = function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);

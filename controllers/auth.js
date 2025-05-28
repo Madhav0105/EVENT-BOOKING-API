@@ -11,14 +11,14 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user || !(await user.comparePassword(password)))
+    const u = await User.findOne({ email });
+    if (!u || !(await u.comparePassword(password)))
       return res.status(401).json({ message: "Invalid user or password" });
-    const token = jwt.sign(
-      { id: user._id, email: user.email, role: user.role },
+    const a = jwt.sign(
+      { id: u._id, email: u.email, role: u.role },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
-    res.json({ token });
+    res.json({ a });
   
 };
